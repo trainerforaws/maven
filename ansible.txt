@@ -1,0 +1,153 @@
+app.yml
+-------
+
+---
+- hosts: ansible
+
+  tasks:
+  - name: create docker image
+    command: docker build -t batch25:latest .
+    args:
+      chdir: /opt/docker
+
+  - name: create tag to push image to dockerhub
+    command: docker tag batch25:latest trainerforaws/batch25:latest
+
+  - name: push the image to dockerhub
+    command: docker push trainerforaws/batch25:latest
+
+deploy.yml
+----------
+---
+- hosts: docker
+
+  tasks:
+  - name: stop existing container
+    command: docker stop Batch25app
+    ignore_errors: yes
+
+  - name: remove container
+    command: docker rm Batch25app
+    ignore_errors: yes
+
+  - name: remove image
+    command: docker rmi trainerforaws/batch25:latest
+    ignore_errors: yes
+
+  - name: create container
+    command: docker run -d --name Batch25app -p 8078:8080 trainerforaws/batch25:latest
+
+
+history of linux commands for reference:
+ll -la
+ssh-keygen
+ll
+ll -la
+date
+cd .ssh/
+ll
+cat id_rsa.pub
+ssh-copy-id 172.31.45.152
+ll -la
+cd .ssh/
+ll
+cat id_rsa.pub
+ll
+cat known_hosts
+cd
+ansible all -m ping -i /etc/ansible/hosts
+ansible all -m command -a uptime
+vi app.yml
+clear
+ansible all -m ping -i /etc/ansible/hosts
+docker
+docker images
+vi /etc/ansible/hosts
+sudo vi /etc/ansible/hosts
+ansible all -m ping -i /etc/ansible/hosts
+ssh-copy-id 172.31.35.194
+ll -la
+cd .ssh/
+ll
+cd
+ansible all -m ping -i /etc/ansible/hosts
+date
+vi new.yml
+ansible playbook new.yml --check
+ansible -playbook new.yml --check
+ansible-playbook new.yml --check
+docker images
+ansible-playbook new.yml
+docker images
+vi new.yml
+ansible-playbook new.yml --check
+ansible-playbook new.yml
+vi new.yml
+docker ps
+docker ps -a
+docker images
+docker run -d --name tomcat -p 8087:8080 tomcat
+docker ps
+docker run -d --name tomcat -p 8087:8080 tomcat
+docker stop tomcat
+docker rm tomcat
+docker run -d --name tomcat -p 8087:8080 tomcat
+docker stop tomcat
+docker rm tomcat
+clear
+vi new.yml
+ansible-playbook new.yml --check
+vi new.yml
+ansible-playbook new.yml --check
+ansible-playbook new.yml
+vi new.yml
+ansible-playbook new.yml --check
+vi new.yml
+ansible-playbook new.yml --check
+docker ps
+ansible-playbook new.yml --check
+ansible-playbook new.yml
+docker images
+vi new.yml
+ansible-playbook new.yml
+docke ps
+docker ps
+docker ps -a
+ansible-playbook new.yml
+docker login
+ll
+cat new.yml
+docker images
+vi Dockerfile
+docker build -t team .
+docker images
+docker login
+docker images
+docker push team:latest
+docker tag team:latest trainerforaws/team:latest
+docker images
+docker push trainerforaws/team:latest
+ll
+vi new.yml
+ansible-playbook new.yml --check
+ansible-playbook new.yml
+vi deploy.yml
+cat deploy.yml
+ansible-playbook deploy.yml --check
+ansible-playbook deploy.yml
+vi deploy.yml
+ansible-playbook deploy.yml
+cd /opt/docker/
+ll
+cat app.yml
+vi deploy.yml
+cat  deploy.yml
+cat app.yml
+cat deploy.yml
+
+
+
+
+
+
+hist
