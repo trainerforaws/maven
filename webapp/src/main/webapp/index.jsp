@@ -4,8 +4,8 @@
     <p>Please fill in this form</p>
     <hr>
      
-    <label for="Name"><b>Enter Name</b></label>
-    <input type="text" placeholder="Enter Name" name="Name" id="Name" required>
+    <label for="Name"><b>Please Enter Name</b></label>
+    <input type="text" placeholder="Please Enter Name" name="Name" id="Name" required>
     <br>
     
     <label for="mobile"><b>Enter mobile</b></label>
